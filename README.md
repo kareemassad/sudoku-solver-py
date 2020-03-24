@@ -1,8 +1,10 @@
 # Sudoku Solver
 
-A program that uses the backtracking algorithm to solve a sudoku board.
+A program that uses the backtracking algorithm and Selenium to solve an expert sudoku board live on sudoku.com.
 
 ## Implementation
+
+### Solving the board
 
 This program will use the backtracking algorithm to solve the puzzle
 
@@ -13,6 +15,6 @@ This program will use the backtracking algorithm to solve the puzzle
    2) If invalid, reset the entry just filled and try again.
 4) Once the board is full, the puzzle is solved.
 
-## Moving Forward
+### Interfacing with Sudoku.com
 
-I will be transitioning this project to a Selenium project that will automatically take a puzzle from Sudoku.com and input the result immediately.
+The current plan is to use Selenium and the Selenium WebDriver to interface with sudoku.com. Ideally, the program will be able to read the given puzzle on sudoku.com/expert/ and organize it into a 2D array. The implementation mentioned above would then be implemented to solve it. After it is solved Selenium will be used to input the values on the website.
