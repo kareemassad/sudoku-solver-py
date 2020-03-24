@@ -10,7 +10,7 @@ def find_empty_node(board):
     return None
             
 
-#TODO: Make a function to find if the number is valid in the current board
+#DONE: Make a function to find if the number is valid in the current board
 def check_validity(board, insertion, location):
     # We need to check the row, column, and square
     # return FALSE for duplicate, TRUE if we are certain it is valid
@@ -43,11 +43,30 @@ def check_validity(board, insertion, location):
                 return False
     return True
 
-#TODO: Make a function to try all numbers
+def solve_Sudoku(board):
+    # recursive backtracking algorithm
+    find = find_empty_node(board)
+    # Base Case: if we reach this point, we are at the last iteration possible
+    if not find:
+        return True
+    #otherwise it would have returned a row and a column and should repeat
+    else:
+        row, column = find 
+    
+    #not open ended as numbers are finite
+    for i in range(1, 10):
+        if check_validity(board, i, (row,column)):
+            #simply add it in if valid  
+            board[row][column] = i
 
+            #RECURSION ALERT
+            if solve_Sudoku(board):
+                return True    
+            #reset last value if it doesnt work then rerun
+            board[row][column] = 0
+    return False 
+         
 
-
-#TODO: Make the backtracking function
 
 # This funtion prints the board
 def print_board(board):
@@ -88,6 +107,10 @@ if __name__ == "__main__":
         ]
 
     print_board(board)
-    find_empty_node(board)
+    solve_Sudoku(board)
+    print("", end="\n")
+    print("NEW LINE" * 10)  
+    print("", end="\n")
+    print_board(board)
 
     pass
