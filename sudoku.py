@@ -1,5 +1,17 @@
 #DONE: Make a function to pick an empty node
 def find_empty_node(board):
+    """
+    Iterates through the board to find an empty node outlined by a 0
+    
+    Parameters: 
+
+        board (2D List): Contains the board going to be solved.
+
+    Returns:
+
+        None
+    """
+
     #length of board
     for row in range(len(board)):
         #length of row
@@ -12,6 +24,21 @@ def find_empty_node(board):
 
 #DONE: Make a function to find if the number is valid in the current board
 def check_validity(board, insertion, location):
+    """
+    Iterates through the board to check if a certain insertion is valid at the current location
+    
+    Parameters: 
+
+        board (2D list): Contains the board going to be solved.
+        insertion (int) : Contains the number being inserted to the empty node
+        location (tuple) : Contains the coordinate location where the number is being inserted as (row,column)
+    
+    Returns:
+
+        False: if the number being inserted is invalid
+        True: if the number is valid
+
+    """
     # We need to check the row, column, and square
     # return FALSE for duplicate, TRUE if we are certain it is valid
 
@@ -45,6 +72,18 @@ def check_validity(board, insertion, location):
 
 # DONE:Implement the backtracking algorithm to solve the board
 def solve_Sudoku(board):
+    """
+    Uses the backtracking algorithm to solve the puzzle
+    
+    Parameters: 
+
+        board (2D list): Contains the board going to be solved.
+    
+    Returns:
+
+        True: The solved board
+
+    """
     # recursive backtracking algorithm
     find = find_empty_node(board)
     # Base Case: if we reach this point, we are at the last iteration possible
@@ -71,22 +110,30 @@ def solve_Sudoku(board):
 
 # This funtion prints the board
 def print_board(board):
-    #TODO refactor code from i and j to rows and columns to be more clear
-    for i in range(len(board)):
+    """
+    Iterates through the board list and prints it in a visually appealing way.
+    
+    Parameters: 
+
+        board (2D list): Contains the board going to be solved.
+
+    """
+    #DONE refactor code from i and j to rows and columns to be more clear
+    for row in range(len(board)):
         # Prints 8 dashes every 3 rows but not at the start or finish
-        if i % 3==0 and i != 0:
+        if row % 3==0 and row != 0:
             print(" - " * 8)
         
-        for j in range(len(board)):
+        for column in range(len(board)):
             # Prints a line after every 3 rows except the first and last
-            if j % 3==0 and j != 0:
+            if column % 3==0 and column != 0:
                 print(" | ", end="")
 
             # Used to print
-            if j == 8:
-                print(board[i][j])
+            if column == 8:
+                print(board[row][column])
             else:
-                print(str(board[i][j]) + " ", end="")
+                print(str(board[row][column]) + " ", end="")
 
 if __name__ == "__main__":
     # creating 9x9 sudoku board using a 2D array
