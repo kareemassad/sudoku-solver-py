@@ -1,4 +1,4 @@
-# sudoku-solver-py
+# Sudoku Solver
 
 A program that uses the backtracking algorithm to solve a sudoku board.
 
