@@ -11,13 +11,34 @@ driver.get("https://sudoku.com/expert/")
 #confirm the title has sudoku in it
 assert "sudoku" in driver.title
 
-time.sleep(2)
-#returns an exception if element "game-table" is not located
-board = WebDriverWait(driver,10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
-    )
-cells = board.find_element_by_class_name("game-cell")
+while True:
 
-print(board)
-print(cells)
-# driver.close()
+    time.sleep(2)
+    #returns an exception if element "game-table" is not located
+    gameTable = WebDriverWait(driver,10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
+        )
+    gameCell = gameTable.find_element_by_class_name("game-cell")
+
+    #get the initial values of the board given at sudoku.com
+    i = 0
+    givenBoard = [[]]
+
+    for x, cell in enumerate(gameCell):
+        if x % 9 == 0 and x != 0:
+            givenBoard.append([])
+            i = i + 1
+        value = cell.find_element_by_class_name("cell-value")
+        try:
+            text = value.find_element_by_class_name("cell-value")
+        except:
+            givenBoard[i].append(0)
+            continue
+
+print(i)
+
+print(gameTable)
+print(gameCell)
+
+#Closes the page
+driver.close()
