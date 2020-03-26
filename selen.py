@@ -18,7 +18,7 @@ while True:
     gameTable = WebDriverWait(driver,10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
         )
-    gameCell = gameTable.find_element_by_class_name("game-cell")
+    gameCell = gameTable.find_elements_by_class_name("game-cell")
 
     #get the initial values of the board given at sudoku.com
     i = 0
@@ -30,10 +30,33 @@ while True:
             i = i + 1
         value = cell.find_element_by_class_name("cell-value")
         try:
-            text = value.find_element_by_class_name("cell-value")
+            text = value.find_element_by_tag_name("svg")
         except:
             givenBoard[i].append(0)
             continue
+
+        width, height = (text.get_attribute("width"), text.get_attribute("height"))
+        width = int(width)
+        height = int(height)
+
+    if (width, height) == (22,32):
+        s = text.find_element_by_tag_name("path").get_attribute("d")[0:6]
+        if s == "M10.53":
+            givenBoard[i].append(8)
+        else:
+            givenBoard[i].append(6)
+        
+    
+    dict = {
+        (12,30) : 1,
+        (20,31) : 2,
+        (21,32) : 3,
+        (24,30) : 4,
+        (21,31) : 5,
+        (20,30) : 7,
+        (23,32) : 9,
+    }
+    givenBoard[i].append(dict.get((width,height)))
 
 print(i)
 
