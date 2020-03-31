@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+# importing sudoku.py
+from sudoku import find_empty_node, solve_Sudoku, check_validity
 
 #pick browser
 driver = webdriver.Chrome('chromedriver\chromedriver.exe')
@@ -11,6 +13,7 @@ driver.get("https://sudoku.com/expert/")
 #confirm the title has sudoku in it
 assert "sudoku" in driver.title
 
+# not sure if this is necessary tbh
 while True:
 
     time.sleep(2)
@@ -24,6 +27,7 @@ while True:
     i = 0
     givenBoard = [[]]
 
+
     for x, cell in enumerate(gameCell):
         if x % 9 == 0 and x != 0:
             givenBoard.append([])
@@ -36,17 +40,21 @@ while True:
             continue
 
         width, height = (text.get_attribute("width"), text.get_attribute("height"))
-        width = int(width)
-        height = int(height)
+        # width = int(width)
+        # height = int(height)
 
+
+    # Hacky way to detect the numbers on the board as sudoku.com uses SVGS instead of numbers. This checks
+    # for height or the special s char at the svg. The dictionary contains 1>5,7,9 and 6,8 are the same size
+    # so they use the s char.
     if (width, height) == (22,32):
         s = text.find_element_by_tag_name("path").get_attribute("d")[0:6]
         if s == "M10.53":
             givenBoard[i].append(8)
         else:
             givenBoard[i].append(6)
-        
-    
+
+
     dict = {
         (12,30) : 1,
         (20,31) : 2,
@@ -57,11 +65,15 @@ while True:
         (23,32) : 9,
     }
     givenBoard[i].append(dict.get((width,height)))
+    
+#creating a backup
+backup = list(map(list, givenBoard))
+solve_Sudoku(givenBoard)
 
-print(i)
+print(backup)
+print(givenBoard)
 
-print(gameTable)
-print(gameCell)
+#using numpad to input
 
 #Closes the page
 driver.close()
