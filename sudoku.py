@@ -135,31 +135,31 @@ def print_board(board):
             else:
                 print(str(board[row][column]) + " ", end="")
 
-if __name__ == "__main__":
-    # creating 9x9 sudoku board using a 2D array
+# if __name__ == "__main__":
+#     # creating 9x9 sudoku board using a 2D array
 
-    # creating a 2D array for the grid 
-    board = [[0 for x in range(9)] for y in range(9)] 
+#     # creating a 2D array for the grid 
+#     board = [[0 for x in range(9)] for y in range(9)] 
 
-    #Create board to solve
-    board = [
-            [7,6,0,0,0,0,0,0,0], 
-            [0,5,0,0,0,0,8,2,0],
-            [0,0,0,2,0,7,0,4,0], 
-            [0,0,0,0,9,6,7,0,0],
-            [0,3,0,0,0,0,0,1,0],
-            [0,0,0,8,0,0,0,0,0],
-            [2,0,0,0,0,1,3,0,0],
-            [1,0,0,0,0,0,9,6,0],
-            [0,7,0,0,0,9,0,0,5],
-        ]
+#     #Create board to solve
+#     board = [
+#             [7,6,0,0,0,0,0,0,0], 
+#             [0,5,0,0,0,0,8,2,0],
+#             [0,0,0,2,0,7,0,4,0], 
+#             [0,0,0,0,9,6,7,0,0],
+#             [0,3,0,0,0,0,0,1,0],
+#             [0,0,0,8,0,0,0,0,0],
+#             [2,0,0,0,0,1,3,0,0],
+#             [1,0,0,0,0,0,9,6,0],
+#             [0,7,0,0,0,9,0,0,5],
+#         ]
 
-    #Testing
-    print_board(board)
-    solve_Sudoku(board)
-    print("", end="\n")
-    print("NEW LINE" * 10)  
-    print("", end="\n")
-    print_board(board)
+#     #Testing
+#     print_board(board)
+#     solve_Sudoku(board)
+#     print("", end="\n")
+#     print("NEW LINE" * 10)  
+#     print("", end="\n")
+#     print_board(board)
 
-    pass
+#     pass
