@@ -2,6 +2,14 @@
 
 A program that uses the backtracking algorithm and Selenium to solve an expert sudoku board live on sudoku.com.
 
+## How to run
+
+1) Install all packages in your project directory
+`$ pip install -r requirements.txt`
+
+2) Run selen.py using
+`$ py selen.py`
+
 ## Implementation
 
 ### Solving the board
