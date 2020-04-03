@@ -13,8 +13,18 @@ driver.get("https://sudoku.com/expert/")
 #confirm the title has sudoku in it
 assert "sudoku" in driver.title
 
+### PARAMS THAT COULD BECOME PART OF A GUI IN THE FUTURE
+# Change this to equal the number of Sudoku boards you want solved.
+numberToSolve = 2
+# Change to True if you want the browser to close after
+closeBrowser = True
+# Change to True of you want it to display number of boards solved
+printSolved = True
+
 # not sure if this is necessary tbh
-while True:
+count = 0
+while count != numberToSolve:
+    count = count + 1
 
     time.sleep(2)
     #returns an exception if element "game-table" is not located
@@ -62,36 +72,12 @@ while True:
             (23,32) : 9,
         }
             sudokuTable[i].append(dict.get((width,height)))
-
-        #EMERGENCY CODE incase dictionary system breaks again
-        # if width == 12:
-        #     sudokuTable[i].append(1)
-        # elif width == 20:
-        #     if height == 30:
-        #         sudokuTable[i].append(7)
-        #     else:
-        #         sudokuTable[i].append(2)
-        # elif width == 21:
-        #     if height == 31:
-        #         sudokuTable[i].append(5)
-        #     else:
-        #         sudokuTable[i].append(3)
-        # elif (width, height) == (22,32):
-        #     s = text.find_element_by_tag_name("path").get_attribute("d")[0:6]
-        #     if s == "M10.53":
-        #         sudokuTable[i].append(8)
-        #     else:
-        #         sudokuTable[i].append(6)
-        # elif width == 23:
-        #     sudokuTable[i].append(9)
-        # else:
-        #     sudokuTable[i].append(4)
-        #sudokuTable[i].append(dict.get((width,height)))
     
     #creating a backup
     backup = list(map(list, sudokuTable))
     solve_Sudoku(sudokuTable)
 
+    ### TESTING
     # print(backup)
     # print(sudokuTable)
 
@@ -117,3 +103,9 @@ while True:
     ## Comment the bottom 2 lines and the while loop above to make it run only once 
     time.sleep(2)
     driver.execute_script("arguments[0].click();", play_again)
+
+if printSolved:
+    print("This program has solved " + str(numberToSolve) + " Sudoku boards.")
+
+if closeBrowser:
+    driver.close()
