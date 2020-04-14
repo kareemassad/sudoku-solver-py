@@ -20,7 +20,7 @@ $ py selen.py
 
 ## Demo
 
-![Sudoku.com being solved!](img\full-gif-99comp.gif)
+![](https://github.com/kareemassad/sudoku-solver-py/blob/master/img/full-gif-99comp.gif)
 
 ## Implementation
 
