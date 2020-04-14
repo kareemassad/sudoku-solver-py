@@ -1,4 +1,4 @@
-# Sudoku Solver
+# Sudoku.com Expert Puzzle Solver
 
 A program that uses the backtracking algorithm and the Python Selenium Library to solve an expert sudoku board live on sudoku.com.
 
