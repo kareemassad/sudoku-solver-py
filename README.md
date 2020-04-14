@@ -10,11 +10,17 @@ A program that uses the backtracking algorithm and the Python Selenium Library t
 $ pip install -r requirements.txt
 ```
 
-2) Run selen.py using
+2) Make sure that you are using the appropriate web driver for your browser. The default implementation is for Chrome.
+
+3) Run selen.py using
 
 ```bash 
 $ py selen.py
 ```
+
+## Demo
+
+![Sudoku.com being solved!](img\full-gif-99comp.gif)
 
 ## Implementation
 
