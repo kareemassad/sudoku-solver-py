@@ -18,7 +18,7 @@ while True:
 
     time.sleep(2)
     #returns an exception if element "game-table" is not located
-    gameBoard = WebDriverWait(driver,10).until(
+    gameBoard = WebDriverWait(driver,8).until(
         EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
         )
     gameCells = gameBoard.find_elements_by_class_name("game-cell")
@@ -62,31 +62,6 @@ while True:
             (23,32) : 9,
         }
             sudokuTable[i].append(dict.get((width,height)))
-
-        #EMERGENCY CODE incase dictionary system breaks again
-        # if width == 12:
-        #     sudokuTable[i].append(1)
-        # elif width == 20:
-        #     if height == 30:
-        #         sudokuTable[i].append(7)
-        #     else:
-        #         sudokuTable[i].append(2)
-        # elif width == 21:
-        #     if height == 31:
-        #         sudokuTable[i].append(5)
-        #     else:
-        #         sudokuTable[i].append(3)
-        # elif (width, height) == (22,32):
-        #     s = text.find_element_by_tag_name("path").get_attribute("d")[0:6]
-        #     if s == "M10.53":
-        #         sudokuTable[i].append(8)
-        #     else:
-        #         sudokuTable[i].append(6)
-        # elif width == 23:
-        #     sudokuTable[i].append(9)
-        # else:
-        #     sudokuTable[i].append(4)
-        #sudokuTable[i].append(dict.get((width,height)))
     
     #creating a backup
     backup = list(map(list, sudokuTable))
