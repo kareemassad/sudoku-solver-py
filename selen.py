@@ -13,12 +13,26 @@ driver.get("https://sudoku.com/expert/")
 #confirm the title has sudoku in it
 assert "sudoku" in driver.title
 
+### PARAMS THAT COULD BECOME PART OF A GUI IN THE FUTURE
+# Change this to equal the number of Sudoku boards you want solved.
+numberToSolve = 2
+# Change to True if you want the browser to close after
+closeBrowser = True
+# Change to True of you want it to display number of boards solved
+printSolved = True
+
 # not sure if this is necessary tbh
-while True:
+count = 0
+while count != numberToSolve:
+    count = count + 1
 
     time.sleep(2)
     #returns an exception if element "game-table" is not located
+<<<<<<< HEAD
     gameBoard = WebDriverWait(driver,8).until(
+=======
+    gameBoard = WebDriverWait(driver,20).until(
+>>>>>>> e1aa463d9754927c1c54a0a6cd024b680b302a2d
         EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
         )
     gameCells = gameBoard.find_elements_by_class_name("game-cell")
@@ -67,6 +81,7 @@ while True:
     backup = list(map(list, sudokuTable))
     solve_Sudoku(sudokuTable)
 
+    ### TESTING
     # print(backup)
     # print(sudokuTable)
 
@@ -92,3 +107,9 @@ while True:
     ## Comment the bottom 2 lines and the while loop above to make it run only once 
     time.sleep(2)
     driver.execute_script("arguments[0].click();", play_again)
+
+if printSolved:
+    print("This program has solved " + str(numberToSolve) + " Sudoku boards.")
+
+if closeBrowser:
+    driver.close()
