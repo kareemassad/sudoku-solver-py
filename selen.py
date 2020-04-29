@@ -28,11 +28,7 @@ while count != numberToSolve:
 
     time.sleep(2)
     #returns an exception if element "game-table" is not located
-<<<<<<< HEAD
     gameBoard = WebDriverWait(driver,8).until(
-=======
-    gameBoard = WebDriverWait(driver,20).until(
->>>>>>> e1aa463d9754927c1c54a0a6cd024b680b302a2d
         EC.presence_of_element_located((By.CLASS_NAME, "game-table"))
         )
     gameCells = gameBoard.find_elements_by_class_name("game-cell")
