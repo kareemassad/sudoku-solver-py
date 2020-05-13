@@ -2,6 +2,8 @@
 
 A program that uses the backtracking algorithm and the Python Selenium Library to solve an expert sudoku board live on sudoku.com.
 
+![](https://github.com/kareemassad/sudoku-solver-py/blob/master/img/full-gif-99comp.gif)
+
 ## How to run
 
 1) Install all packages in your project directory
@@ -17,10 +19,6 @@ $ pip install -r requirements.txt
 ```bash 
 $ py selen.py
 ```
-
-## Demo
-
-![](https://github.com/kareemassad/sudoku-solver-py/blob/master/img/full-gif-99comp.gif)
 
 ## Implementation
 

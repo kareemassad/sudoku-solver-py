@@ -21,6 +21,8 @@ closeBrowser = True
 # Change to True of you want it to display number of boards solved
 printSolved = True
 
+# TODO: Create a function to print the completed board in console.
+
 # not sure if this is necessary tbh
 count = 0
 while count != numberToSolve:
