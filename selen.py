@@ -1,27 +1,35 @@
+# TODO: Create a function to print the completed board in console.
+# TODO: Create a function that tracks the total time the program is running. This stat will differ based on system but would be interesting to see.
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+
 # importing sudoku.py
 from sudoku import find_empty_node, solve_Sudoku, check_validity
+
+### PARAMS THAT COULD BECOME PART OF A GUI IN THE FUTURE
+# Change this to equal the number of Sudoku boards you want solved.
+numberToSolve = 1
+# Change to True if you want the browser to close after
+closeBrowser = True
+# Change to True of you want it to display number of boards solved
+printSolved = True
+# Change to True if you want Time Elapsed information printed in console.
+# timeCount = True
+
+# if timeCount:
+#     timeStart = time.process_time()
+#     pass
 
 #pick browser
 driver = webdriver.Chrome('chromedriver\chromedriver.exe')
 #pick site being used
 driver.get("https://sudoku.com/expert/")
-#confirm the title has sudoku in it
+#confirm the title has sudoku in it to check for correct page.
 assert "sudoku" in driver.title
-
-### PARAMS THAT COULD BECOME PART OF A GUI IN THE FUTURE
-# Change this to equal the number of Sudoku boards you want solved.
-numberToSolve = 2
-# Change to True if you want the browser to close after
-closeBrowser = True
-# Change to True of you want it to display number of boards solved
-printSolved = True
-
-# TODO: Create a function to print the completed board in console.
 
 # not sure if this is necessary tbh
 count = 0
@@ -56,8 +64,8 @@ while count != numberToSolve:
 
 
     # Hacky way to detect the numbers on the board as sudoku.com uses SVGS instead of numbers. This checks
-    # for height or the special s char at the svg. The dictionary contains 1>5,7,9 and 6,8 are the same size
-    # so they use the s char.
+    # for height or the special s char at the svg. The dictionary only contains 1-5,7,9 as 6,8 are the same size
+    # so they use the special s char.
         s = text.find_element_by_tag_name("path").get_attribute("d")[0:6]
         if s == "M10.53":
             sudokuTable[i].append(8)
@@ -73,6 +81,7 @@ while count != numberToSolve:
             (20,30) : 7,
             (23,32) : 9,
         }
+            #This spacing error was really hard to notice haha
             sudokuTable[i].append(dict.get((width,height)))
     
     #creating a backup
@@ -111,3 +120,7 @@ if printSolved:
 
 if closeBrowser:
     driver.close()
+
+# if timeCount :
+#     timeFinal = time.process_time() - timeStart
+#     print("Time elapsed: ", timeFinal - timeStart, "seconds")

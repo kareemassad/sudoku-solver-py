@@ -20,6 +20,8 @@ $ pip install -r requirements.txt
 $ py selen.py
 ```
 
+4) Modify solving paramaters in selen.py
+
 ## Implementation
 
 This program uses the backtracking algorithm to solve the Sudoku puzzle.
