@@ -35,5 +35,8 @@ This program uses the backtracking algorithm to solve the Sudoku puzzle.
 
 The program then uses the Selenium Python library to open an instance of chrome with the url : Sudoku.com/expert/. It then copies the board, solves it, then inputs it back into the site using the given numpad.
 
+## Credits 
+Credits to TechWithTim for parts of his Sudoku Solver
+
 ## License 
 This project is under the MIT Licence for Open Source.
